@@ -1,0 +1,70 @@
+version: v4.0
+navigator:
+    name: Import Automation
+    email: import.automation@aurea.com
+repo:
+    companyName: Aurea
+    productName: neyckerDockerizedSpringBootApp
+    repoUrl: https://github.com/trilogy-group/neycker-dockerized-spring-boot-app
+    repoType: Deployable service
+    githubTokenSecretId: devhub-import/env/xohub/githubToken/dev
+    branch: master
+buildDeps: []
+build:
+    techStack: Java
+    os: ubuntu-16.04
+    image: maven:3.6.3-jdk-11
+    toolchainVersion: ""
+    tool: ""
+    buildCommand: mvn compile
+test:
+    utFramework: JUnit
+    testCommand: mvn test
+package:
+    packageCommand: mvn package
+    artifactDir: ./target
+    artifactUploadCommand: mvn deploy
+deploy:
+    serviceName: spring-boot-web-service
+    deploymentCheck: echo skip
+    stickySessions: "false"
+    canUseLb: "false"
+    stablePersistence: "false"
+    fixedNetworkIdentifier: "false"
+run:
+    dockerized: true
+    os: ubuntu-16.04
+    runCommand: echo skip
+    installCommand: echo skip
+    userName: root
+ports:
+    - name: http8080
+      number: 8080
+      protocol: HTTP
+      public: true
+      path: /
+envs:
+    - name: prod
+      default: false
+      vars:
+        - key: DB_PASSWORD
+          kind: secret
+          value: devhub-import/env/SECRET_TEST_CR105/dev
+    - name: staging
+      default: false
+      vars:
+        - key: DB_PASSWORD
+          kind: secret
+          value: devhub-import/env/SECRET_TEST_CR105/dev
+    - name: qa
+      default: true
+      vars:
+        - key: DB_PASSWORD
+          kind: secret
+          value: devhub-import/env/SECRET_TEST_CR105/dev
+    - name: dev
+      default: false
+      vars:
+        - key: DB_PASSWORD
+          kind: secret
+          value: devhub-import/env/SECRET_TEST_CR105/dev

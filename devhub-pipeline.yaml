@@ -1,0 +1,19 @@
+version: v1
+productName: neyckerDockerizedSpringBootApp
+buildEnvVars: []
+build:
+    image: maven:3.6.3-jdk-11
+    platform: linux
+    preBuildCommand: echo 'Pre build command is empty'
+    buildCommand: mvn compile
+test:
+    testCommand: mvn test
+package:
+    artifactRepoType: maven2
+    packageCommand: mvn package
+    artifactDir: ./target
+    artifactUploadCommand: mvn deploy
+repoType: Deployable service
+release:
+    targetChartFile: spring-boot-web-service
+    dockerized: true
