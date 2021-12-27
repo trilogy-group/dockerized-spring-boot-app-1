@@ -5,7 +5,7 @@ build:
     image: maven:3.6.3-jdk-11
     platform: linux
     preBuildCommand: echo 'Pre build command is empty'
-    buildCommand: gradlew build
+    buildCommand: ./gradlew build
 test:
     testCommand: mvn test
 package:

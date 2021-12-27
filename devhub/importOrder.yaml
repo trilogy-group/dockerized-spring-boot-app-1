@@ -16,7 +16,7 @@ build:
     image: maven:3.6.3-jdk-11
     toolchainVersion: ""
     tool: ""
-    buildCommand: gradlew build
+    buildCommand: ./gradlew build
 test:
     utFramework: JUnit
     testCommand: mvn test
