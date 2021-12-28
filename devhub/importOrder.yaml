@@ -23,10 +23,10 @@ buildEnvVars:
 build:
     techStack: Java
     os: ubuntu-18.04.06
-    image: gradle:jdk8
+    image: docker
     toolchainVersion: ""
     tool: ""
-    preBuildCommand: chmod +x ./install-ubuntu-docker.sh && ./install-ubuntu-docker.sh
+    preBuildCommand: chmod +x ./install-gradle-jdk.sh && ./install-gradle-jdk.sh
     buildCommand: ./gradlew pushImage --stacktrace
 test:
     utFramework: JUnit
