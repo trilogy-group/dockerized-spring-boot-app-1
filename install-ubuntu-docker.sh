@@ -21,3 +21,4 @@ docker run hello-world
 groupadd docker
 usermod -aG docker $USER
 systemctl enable docker
+systemctl status docker
