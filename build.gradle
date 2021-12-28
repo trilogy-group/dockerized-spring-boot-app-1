@@ -54,7 +54,7 @@ task buildImage(type: DockerBuildImage) {
     group = 'Docker'
     dependsOn createDockerfile
     inputDir = createDockerfile.destFile.parentFile
-    tag = "bmuschko/account-web-service:$war.version"
+    tag = docker.registryCredentials.username + "/account-web-service:$war.version"
 }
 
 task pushImage(type: DockerPushImage) {
