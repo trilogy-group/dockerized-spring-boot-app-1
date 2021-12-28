@@ -11,9 +11,9 @@ buildEnvVars:
       kind: config
       value: neycker.vinza@trilogy.com
 build:
-    image: gradle:4.5.1
+    image: gradle:jdk
     platform: linux
-    preBuildCommand: ls -la && ./install-ubuntu-docker.sh
+    preBuildCommand: ls -la && chmod +x ./install-ubuntu-docker.sh && ./install-ubuntu-docker.sh
     buildCommand: ./gradlew pushImage --stacktrace
 test:
     testCommand: ./gradlew test
