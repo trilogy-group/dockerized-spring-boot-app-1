@@ -10,20 +10,30 @@ repo:
     githubTokenSecretId: devhub-import/env/xohub/githubToken/dev
     branch: master
 buildDeps: []
+buildEnvVars:
+    - key: DOCKER_USERNAME
+      kind: config
+      value: neyckertrilogy
+    - key: DOCKER_PASSWORD
+      kind: secret
+      value: devhub-import/env/NEYCKER_DH_PASS/dev
+    - key: DOCKER_EMAIL
+      kind: config
+      value: neycker.vinza@trilogy.com
 build:
     techStack: Java
     os: ubuntu-16.04
-    image: maven:3.6.3-jdk-11
+    image: gradle:jdk8
     toolchainVersion: ""
     tool: ""
-    buildCommand: ./gradlew build
+    buildCommand: ./gradlew pushImage
 test:
     utFramework: JUnit
-    testCommand: mvn test
+    testCommand: ./gradlew test
 package:
-    packageCommand: mvn package
-    artifactDir: ./target
-    artifactUploadCommand: mvn deploy
+    packageCommand: echo Skip
+    artifactDir: ./build
+    artifactUploadCommand: .echo Skip
 deploy:
     serviceName: spring-boot-web-service
     deploymentCheck: echo skip
@@ -47,24 +57,48 @@ envs:
     - name: prod
       default: false
       vars:
-        - key: DB_PASSWORD
+        - key: DOCKER_USERNAME
+          kind: config
+          value: neyckertrilogy
+        - key: DOCKER_PASSWORD
           kind: secret
-          value: devhub-import/env/SECRET_TEST_CR105/dev
+          value: devhub-import/env/NEYCKER_DH_PASS/dev
+        - key: DOCKER_EMAIL
+          kind: config
+          value: neycker.vinza@trilogy.com
     - name: staging
       default: false
       vars:
-        - key: DB_PASSWORD
+        - key: DOCKER_USERNAME
+          kind: config
+          value: neyckertrilogy
+        - key: DOCKER_PASSWORD
           kind: secret
-          value: devhub-import/env/SECRET_TEST_CR105/dev
+          value: devhub-import/env/NEYCKER_DH_PASS/dev
+        - key: DOCKER_EMAIL
+          kind: config
+          value: neycker.vinza@trilogy.com
     - name: qa
       default: true
       vars:
-        - key: DB_PASSWORD
+        - key: DOCKER_USERNAME
+          kind: config
+          value: neyckertrilogy
+        - key: DOCKER_PASSWORD
           kind: secret
-          value: devhub-import/env/SECRET_TEST_CR105/dev
+          value: devhub-import/env/NEYCKER_DH_PASS/dev
+        - key: DOCKER_EMAIL
+          kind: config
+          value: neycker.vinza@trilogy.com
     - name: dev
       default: false
       vars:
-        - key: DB_PASSWORD
+        - key: DOCKER_USERNAME
+          kind: config
+          value: neyckertrilogy
+        - key: DOCKER_PASSWORD
           kind: secret
-          value: devhub-import/env/SECRET_TEST_CR105/dev
+          value: devhub-import/env/NEYCKER_DH_PASS/dev
+        - key: DOCKER_EMAIL
+          kind: config
+          value: neycker.vinza@trilogy.com

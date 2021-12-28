@@ -1,18 +1,27 @@
 version: v1
 productName: neyckerDockerizedSpringBootApp
-buildEnvVars: []
+buildEnvVars:
+    - key: DOCKER_USERNAME
+      kind: config
+      value: neyckertrilogy
+    - key: DOCKER_PASSWORD
+      kind: secret
+      value: devhub-import/env/NEYCKER_DH_PASS/dev
+    - key: DOCKER_EMAIL
+      kind: config
+      value: neycker.vinza@trilogy.com
 build:
-    image: maven:3.6.3-jdk-11
+    image: gradle:jdk8
     platform: linux
     preBuildCommand: echo 'Pre build command is empty'
-    buildCommand: ./gradlew build
+    buildCommand: ./gradlew pushImage
 test:
-    testCommand: mvn test
+    testCommand: ./gradlew test
 package:
     artifactRepoType: maven2
-    packageCommand: mvn package
-    artifactDir: ./target
-    artifactUploadCommand: mvn deploy
+    packageCommand: echo Skip
+    artifactDir: ./build
+    artifactUploadCommand: .echo Skip
 repoType: Deployable service
 release:
     targetChartFile: spring-boot-web-service
