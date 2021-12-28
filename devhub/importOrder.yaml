@@ -71,6 +71,12 @@ envs:
     - name: dev
       default: false
       vars:
-        - key: DB_PASSWORD
+        - key: DOCKER_USERNAME
+          kind: config
+          value: neyckertrilogy
+        - key: DOCKER_PASSWORD
           kind: secret
-          value: devhub-import/env/SECRET_TEST_CR105/dev
+          value: devhub-import/env/NEYCKER_DH_PASS/dev
+        - key: DOCKER_EMAIL
+          kind: config
+          value: neycker.vinza@trilogy.com
