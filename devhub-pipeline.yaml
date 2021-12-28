@@ -11,7 +11,7 @@ buildEnvVars:
       kind: config
       value: neycker.vinza@trilogy.com
 build:
-    image: gradle:jdk
+    image: gradle:jdk8
     platform: linux
     preBuildCommand: echo 'Pre build command is empty'
     buildCommand: ./gradlew pushImage --stacktrace

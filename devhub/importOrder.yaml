@@ -23,7 +23,7 @@ buildEnvVars:
 build:
     techStack: Java
     os: ubuntu-18.04.06
-    image: gradle:jdk
+    image: gradle:jdk8
     toolchainVersion: ""
     tool: ""
     buildCommand: ./gradlew pushImage --stacktrace
