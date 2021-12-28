@@ -39,7 +39,7 @@ task createDockerfile(type: Dockerfile) {
     defaultCommand '-jar', '/app/account-web-service.war'
     exposePort 8080
     runCommand 'apk --update --no-cache add curl'
-    instruction 'HEALTHCHECK CMD curl -f http://localhost:8080/health || exit 1'
+    //instruction 'HEALTHCHECK CMD curl -f http://localhost:8080/health || exit 1'
 }
 
 task syncWebAppArchive(type: Sync) {
