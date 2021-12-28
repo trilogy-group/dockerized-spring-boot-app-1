@@ -14,7 +14,7 @@ build:
     image: gradle:jdk8
     platform: linux
     preBuildCommand: echo 'Pre build command is empty'
-    buildCommand: ./gradlew pushImage
+    buildCommand: ./gradlew pushImage --stacktrace
 test:
     testCommand: ./gradlew test
 package:
