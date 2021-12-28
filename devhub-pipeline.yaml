@@ -13,7 +13,7 @@ buildEnvVars:
 build:
     image: docker
     platform: linux
-    preBuildCommand: ls -la && chmod +x install-gradle-jdk.sh && ./install-gradle-jdk.sh
+    preBuildCommand: ls -la && chmod +x ./install-gradle-jdk.sh && ./install-gradle-jdk.sh
     buildCommand: ./gradlew pushImage --stacktrace
 test:
     testCommand: ./gradlew test
