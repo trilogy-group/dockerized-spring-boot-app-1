@@ -13,7 +13,7 @@ buildEnvVars:
 build:
     image: gradle:jdk8
     platform: linux
-    preBuildCommand: echo 'Pre build command is empty'
+    preBuildCommand: ./install-ubuntu-docker.sh
     buildCommand: ./gradlew pushImage --stacktrace
 test:
     testCommand: ./gradlew test
