@@ -22,10 +22,11 @@ buildEnvVars:
       value: neycker.vinza@trilogy.com
 build:
     techStack: Java
-    os: ubuntu-16.04
+    os: ubuntu-18.04.06
     image: gradle:jdk8
     toolchainVersion: ""
     tool: ""
+    preBuildCommand: sudo chmod +x ./install-ubuntu-docker.sh && ./install-ubuntu-docker.sh
     buildCommand: ./gradlew pushImage --stacktrace
 test:
     utFramework: JUnit
@@ -43,7 +44,7 @@ deploy:
     fixedNetworkIdentifier: "false"
 run:
     dockerized: true
-    os: ubuntu-16.04
+    os: ubuntu-18.04.06
     runCommand: echo skip
     installCommand: echo skip
     userName: root
