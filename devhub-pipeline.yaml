@@ -2,17 +2,17 @@ version: v1
 productName: neyckerDockerizedSpringBootApp
 buildEnvVars: []
 build:
-    image: maven:3.6.3-jdk-11
+    image: gradle:jdk8
     platform: linux
     preBuildCommand: echo 'Pre build command is empty'
-    buildCommand: ./gradlew build
+    buildCommand: ./gradlew buildImage
 test:
-    testCommand: mvn test
+    testCommand: ./gradlew test
 package:
     artifactRepoType: maven2
-    packageCommand: mvn package
+    packageCommand: ./gradlew buildImage
     artifactDir: ./target
-    artifactUploadCommand: mvn deploy
+    artifactUploadCommand: ./gradlew pushImage
 repoType: Deployable service
 release:
     targetChartFile: spring-boot-web-service
